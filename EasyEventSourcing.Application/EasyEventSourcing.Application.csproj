@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD79F067-CB36-4375-99A1-2A1A134186AC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EasyEventSourcing.Application</RootNamespace>
+    <AssemblyName>EasyEventSourcing.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Factories\CommandHandlerFactory.cs" />
+    <Compile Include="Factories\EventHandlerFactory.cs" />
+    <Compile Include="InMemoryStore\InMemoryEventStore.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EasyEventSourcing.Data\EasyEventSourcing.Data.csproj">
+      <Project>{ED5AF7E7-E2FA-4F8F-A2F6-67E90C2E3C6D}</Project>
+      <Name>EasyEventSourcing.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasyEventSourcing.Domain.Messages\EasyEventSourcing.Domain.Messages.csproj">
+      <Project>{ed8e44b8-019b-4b8d-8b47-093675c70bcb}</Project>
+      <Name>EasyEventSourcing.Domain.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasyEventSourcing.Domain.Read\EasyEventSourcing.Domain.Read.csproj">
+      <Project>{daacafa5-5bf5-497a-a570-1f8c010a7ec7}</Project>
+      <Name>EasyEventSourcing.Domain.Read</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasyEventSourcing.Domain\EasyEventSourcing.Domain.csproj">
+      <Project>{1c4da1ca-9d9e-4a3d-b9e3-4c11b98df82e}</Project>
+      <Name>EasyEventSourcing.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasyEventSourcing.EventSourcing\EasyEventSourcing.EventSourcing.csproj">
+      <Project>{6f93c10f-dcbf-454d-91f2-6cd521dedd9b}</Project>
+      <Name>EasyEventSourcing.EventSourcing</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

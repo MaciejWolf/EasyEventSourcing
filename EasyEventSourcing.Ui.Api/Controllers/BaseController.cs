@@ -15,18 +15,15 @@ namespace EasyEventSourcing.Ui.Api.Controllers
             App = Bootstrap();
         }
 
-        public Guid ClientId
+        public void InitClientId()
         {
-            get
+            if (clientId == null)
             {
-                if (clientId == null)
-                {
-                    clientId = App.GetClientId(Request.Headers.UserAgent.ToString());
-                    App.GetCartId(clientId.Value);
-                }
-
-                return clientId.Value;
+                clientId = App.GetClientId(Request.Headers.UserAgent.ToString());
+                App.GetCartId(clientId.Value);
             }
         }
+
+        public Guid ClientId => clientId.Value;
     }
 }
